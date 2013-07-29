@@ -10,7 +10,11 @@ default_attributes(
   'authorization' => {
     'sudo' => {
       'groups' => ['m.brugidou'],
-      'passwordless' => false
+      'passwordless' => false,
+      'sudoers_default' => [
+	'env_reset',
+        'secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"'
+      ]
     }
   }
 )
