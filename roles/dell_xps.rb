@@ -1,6 +1,7 @@
 name "dell_xps"
 description "Dell XPS 13"
 run_list [
+  "role[dell_hardware]",
   "recipe[ntp]",
   "recipe[sudo]",
   "recipe[config]"
@@ -9,7 +10,6 @@ run_list [
 default_attributes(
   'authorization' => {
     'sudo' => {
-      'groups' => ['m.brugidou'],
       'passwordless' => false,
       'sudoers_defaults' => [
         'env_reset',
