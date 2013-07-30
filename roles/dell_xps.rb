@@ -4,7 +4,7 @@ run_list [
   "role[dell_hardware]",
   "recipe[ntp]",
   "recipe[sudo]",
-  "recipe[config]"
+  "recipe[config::hardware]"
 ]
 
 default_attributes(

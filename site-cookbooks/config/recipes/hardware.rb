@@ -7,11 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-if Chef::Config[:solo]
-  node.__unless[:config][:user][:name] = ENV['SUDO_USER'] || ENV['USER'] || 'A random peon'
-end
-
-
 node[:config][:packages].each do |p|
   package p
 end

@@ -1,14 +1,14 @@
 name "xmonad"
 description "Install and configure xmonad"
 run_list [
-  "recipe[config]",
+  "recipe[config::hardware]"
 ]
 
-default_attributes(
+default_attributes({
   'config' => {
     'packages' => [
       'xorg',
-      'xmonad',
+      'xmonad'
     ]
   }
-)
+})

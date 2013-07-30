@@ -1,7 +1,7 @@
 name "awesome"
 description "Install and configure awesome"
 run_list [
-  "recipe[config]",
+  "recipe[config::hardware]",
 ]
 
 default_attributes(

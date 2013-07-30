@@ -1,18 +1,17 @@
 name "dell_gseux"
 description "Conf for geux's dell"
 run_list [
-  "role[xmonad]",
   "role[dell_xps]",
 ]
 
-default_attributes(
+default_attributes({
   'authorization' => {
     'sudo' => {
       'groups' => ['g.seux'],
     }
   },
   'config' => {
-    'packages' => ['firefox'],
+    'packages' => ['iceweasel'],
     'user' => {
       'name' => 'Gregoire Seux',
       'login' => 'g.seux',
@@ -21,4 +20,4 @@ default_attributes(
 #      'url' => 'https://github.com/brugidou/dotfiles.git',
 #    }
   }
-)
+})
