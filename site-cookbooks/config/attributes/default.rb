@@ -2,6 +2,7 @@ default[:config][:packages] = [
   'laptop-mode-tools',
   'acpi-support',
   'fdpowermon',
+  'firmware-iwlwifi'
 ]
 default[:config][:user][:name] = nil
 default[:config][:user][:login] = nil
