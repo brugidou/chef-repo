@@ -7,3 +7,4 @@ end
 
 package 'krb5-user'
 package 'libpam-krb5'
+package 'libpam-ccreds'
