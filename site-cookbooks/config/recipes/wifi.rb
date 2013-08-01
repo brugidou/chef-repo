@@ -2,6 +2,14 @@ package 'wicd'
 package 'bluetooth'
 package 'blueman'
 
+Chef::Log.warn <<EOF unless File.exist? '/usr/local/share/criteo/criteo_lan.cer'
+Wifi certificate missing:
+
+IMPORTANT: put the Criteo wifi certificate in /usr/local/share/criteo/criteo_lan.cer
+This is necessary for the CRITEO_CORP wifi to work.
+
+EOF
+
 file '/etc/wicd/encryption/templates/wpa2-peap-criteo' do
   content <<EOF
 name = WPA2 PEAP for CRITEO_CORP
