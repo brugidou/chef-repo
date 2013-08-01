@@ -2,6 +2,7 @@ name "dell_mbrugidou"
 description "Conf for mbrugidou's dell"
 run_list [
   'recipe[config::spotify]',
+  'recipe[config::dotfiles]',
   "role[awesome]",
   "role[dell_xps]",
 ]
