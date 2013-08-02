@@ -5,6 +5,7 @@ run_list [
   'recipe[config::dotfiles]',
   "role[awesome]",
   "role[dell_xps]",
+  "recipe[java]"
 ]
 
 default_attributes(

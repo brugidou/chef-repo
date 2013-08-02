@@ -38,11 +38,3 @@ execute 'activate wpa2-peap-criteo' do
   command 'echo wpa2-peap-criteo >> /etc/wicd/encryption/templates/active'
   not_if 'grep wpa2-peap-criteo /etc/wicd/encryption/templates/active'
 end
-
-execute 'update-ca-certificates' do
-   action :nothing
-end
-
-remote_directory '/usr/local/share/ca-certificates' do
-  notifies :run, 'execute[update-ca-certificates]'
-end

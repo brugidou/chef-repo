@@ -5,7 +5,8 @@ run_list [
   "recipe[ntp]",
   "recipe[sudo]",
   "recipe[config::hardware]",
-  "recipe[config::krb5]"
+  "recipe[config::krb5]",
+  "recipe[config::vpn]"
 ]
 
 default_attributes(
@@ -17,5 +18,8 @@ default_attributes(
         'secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"'
       ]
     }
+  },
+  'java' => {
+    'jdk_version' => '7'
   }
 )
