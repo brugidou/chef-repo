@@ -1,4 +1,5 @@
 git "/home/#{node[:config][:user][:login]}" do
+  action :checkout
   repository node[:config][:dotfiles][:url]
   reference node[:config][:dotfiles][:reference]
   enable_submodules true
