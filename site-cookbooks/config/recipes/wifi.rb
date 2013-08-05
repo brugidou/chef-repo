@@ -2,10 +2,12 @@ package 'wicd'
 package 'bluetooth'
 package 'blueman'
 
-Chef::Log.warn <<EOF unless File.exist? '/usr/local/share/criteo/criteo_lan.cer'
+cert_path = '/usr/local/share/criteo/criteo_lan.cer'
+
+Chef::Log.warn <<EOF unless File.exist? cert_path
 Wifi certificate missing:
 
-IMPORTANT: put the Criteo wifi certificate in /usr/local/share/criteo/criteo_lan.cer
+IMPORTANT: put the Criteo wifi certificate in #{cert_path}
 This is necessary for the CRITEO_CORP wifi to work.
 
 EOF
@@ -27,14 +29,38 @@ network={
         eap=PEAP
         identity="$_IDENTITY"
         password="$_PASSWORD"
-        ca_cert="/usr/local/share/criteo/criteo_lan.cer"
+        ca_cert="#{cert_path}"
         phase1="peaplabel=0"
         phase2="auth=MSCHAPV2"
 }
 EOF
 end
 
-execute 'activate wpa2-peap-criteo' do
-  command 'echo wpa2-peap-criteo >> /etc/wicd/encryption/templates/active'
-  not_if 'grep wpa2-peap-criteo /etc/wicd/encryption/templates/active'
+file '/etc/wicd/encryption/templates/wired-criteo' do
+  content <<EOF
+name = 802.1x for CRITEOIS
+author = #{node[:config][:user][:name]}
+version = 1
+require identity *Identity password *Password
+protected password *Password
+-----
+ctrl_interface=/var/run/wpa_supplicant
+network={
+       key_mgmt=IEEE8021X
+       identity="$_IDENTITY"
+       password="$_PASSWORD"
+}
+EOF
+end
+
+{
+  'active' => ['wpa2-peap-criteo'],
+  'active_wired' => ['wired-criteo']
+}.each do |type, templates|
+  templates.each do |tmplate|
+    execute "activate #{tmplate} in #{type}" do
+      command "echo #{tmplate} >> /etc/wicd/encryption/templates/#{type}"
+      not_if "grep #{tmplate} /etc/wicd/encryption/templates/#{type}"
+    end
+  end
 end
