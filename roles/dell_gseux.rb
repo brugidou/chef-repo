@@ -2,6 +2,7 @@ name "dell_gseux"
 description "Conf for geux's dell"
 run_list [
   "role[dell_xps]",
+  "role[xmonad]"
 ]
 
 default_attributes({
