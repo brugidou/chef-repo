@@ -8,6 +8,8 @@ default_attributes({
   'config' => {
     'packages' => [
       'xorg',
+      'dzen2',
+      'rxvt-unicode',
       'xmonad'
     ]
   }
