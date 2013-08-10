@@ -23,3 +23,8 @@ end
 execute "sed -i 's/CONTROL_BLUETOOTH=0/CONTROL_BLUETOOTH=1/' /etc/laptop-mode/conf.d/bluetooth.conf" do
   only_if "grep CONTROL_BLUETOOTH=0 /etc/laptop-mode/conf.d/bluetooth.conf"
 end
+
+#Sound unmuting
+execute "amixer sset Master unmute" do
+  only_if "amixer sget Master | grep 'off]'"
+end
