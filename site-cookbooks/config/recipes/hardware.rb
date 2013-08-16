@@ -35,3 +35,8 @@ cookbook_file "/etc/pm/sleep.d/99backlight" do
   group "root"
   mode "0744"
 end
+
+#power button to suspend
+execute "sed -i 's|/sbin/shutdown -h -P now \"Power button pressed\"|/etc/acpi/sleep_suspend.sh sleep|' /etc/acpi/powerbtn-acpi-support.sh" do
+  only_if "grep 'Power button pressed' /etc/acpi/powerbtn-acpi-support.sh"
+end
