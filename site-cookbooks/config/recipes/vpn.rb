@@ -31,7 +31,7 @@ end
 
 file File.join(home_dir, 'vpn_criteo.sh') do
   content <<EOF
-sudo openconnect https://fr.criteois.com -c ~/.vpn/vpn-certificate.p12 --csd-user #{home_user} --csd-wrapper #{wrapper} --no-xmlpost --no-passwd --authgroup CriteoVPN  --cafile /etc/ssl/certs/ca-certificates.crt
+sudo openconnect https://fr.criteois.com -c ~/.vpn/vpn-certificate.p12 --csd-user #{home_user} --csd-wrapper #{wrapper} --no-xmlpost --no-passwd --authgroup CriteoVPN  --cafile /etc/ssl/certs/ca-certificates.crt --background --syslog
 EOF
   owner home_user
   group home_user

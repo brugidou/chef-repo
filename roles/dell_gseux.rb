@@ -2,7 +2,8 @@ name "dell_gseux"
 description "Conf for geux's dell"
 run_list [
   "role[dell_xps]",
-  "role[xmonad]"
+  "role[xmonad]",
+  "recipe[config::steam]"
 ]
 
 default_attributes({
