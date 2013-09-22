@@ -5,6 +5,7 @@ run_list [
   'recipe[config::dotfiles]',
   "role[awesome]",
   "role[dell_xps]",
+  "recipe[config::network-manager]",
   "recipe[java]"
 ]
 

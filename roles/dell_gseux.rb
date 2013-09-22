@@ -2,6 +2,7 @@ name "dell_gseux"
 description "Conf for geux's dell"
 run_list [
   "role[dell_xps]",
+  "reipe[config::wicd]",
   "role[xmonad]",
   "recipe[config::steam]"
 ]
