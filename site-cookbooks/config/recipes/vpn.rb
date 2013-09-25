@@ -1,6 +1,8 @@
 include_recipe 'config::certs'
 
 criteo_dir = '/usr/local/share/criteo'
+
+directory criteo_dir
 #cert_path = File.join(criteo_dir, 'vpn.p12')
 #Chef::Log.warn "Please add your VPN personal certificate (PKCS12 file) downloaded from https://pki.criteois.com in #{cert_path}"
 

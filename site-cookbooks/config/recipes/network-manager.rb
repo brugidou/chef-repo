@@ -1,5 +1,12 @@
 include_recipe 'config::bluetooth'
 
+package 'wicd' do
+  action :remove
+end
+package 'wicd-daemon' do
+  action :remove
+end
+
 package 'network-manager'
 package 'network-manager-gnome'
 
