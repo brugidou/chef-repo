@@ -9,3 +9,4 @@ default[:config][:user][:login] = nil
 
 default[:config][:dotfiles][:url] = nil
 default[:config][:dotfiles][:reference] = 'master'
+default[:config][:dotfiles][:link] = false

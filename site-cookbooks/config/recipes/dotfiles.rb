@@ -1,4 +1,8 @@
-git "/home/#{node[:config][:user][:login]}" do
+git_dest = ["/home", node[:config][:user][:login]]
+git_dest << ".dotfiles" if node[:config][:dotfiles][:link]
+
+
+git File.join(git_dest) do
   action :checkout
   repository node[:config][:dotfiles][:url]
   reference node[:config][:dotfiles][:reference]
