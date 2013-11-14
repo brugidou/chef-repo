@@ -4,7 +4,8 @@ run_list [
   "role[dell_xps]",
   "recipe[config::wicd]",
   "role[xmonad]",
-  "recipe[config::steam]"
+  "recipe[config::steam]",
+  'recipe[config::chef]'
 ]
 
 default_attributes({
