@@ -15,9 +15,10 @@ service 'acpid' do
   action [:enable, :start]
 end
 
-execute "sed -i 's/#LID_SLEEP/LID_SLEEP/' /etc/default/acpi-support" do
+# This is actually done by laptop-mode already now
+execute "sed -i 's/LID_SLEEP/#LID_SLEEP/' /etc/default/acpi-support" do
   notifies :restart, 'service[acpid]'
-  only_if "grep '#LID_SLEEP' /etc/default/acpi-support"
+  only_if "grep '^LID_SLEEP' /etc/default/acpi-support"
 end
 
 execute "sed -i 's/CONTROL_BLUETOOTH=0/CONTROL_BLUETOOTH=1/' /etc/laptop-mode/conf.d/bluetooth.conf" do
