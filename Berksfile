@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 #^syntax detection
 
-site 'http://community.opscode.com/api/v1'
+source 'https://supermarket.chef.io'
 
 cookbook 'apt'
 cookbook 'sudo'
