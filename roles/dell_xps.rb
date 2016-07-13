@@ -20,6 +20,6 @@ default_attributes(
     }
   },
   'java' => {
-    'jdk_version' => '7'
+    'jdk_version' => '8'
   }
 )
